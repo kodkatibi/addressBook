@@ -7,10 +7,11 @@ services:
         environment:
             POSTGRES_USER: ${DB_USERNAME:-postgres}
             POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+            POSTGRES_DB: ${DB_DATABASE}
             PGDATA: /data/postgres
         volumes:
             - postgres:/database/postgres
-            - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+            - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
         ports:
             - "5432:5432"
