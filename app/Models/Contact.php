@@ -3,22 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Contact extends BaseUUIDModel
 {
     use HasFactory;
-
-    protected $primaryKey = 'uuid';
     protected $fillable = [
         'uuid',
         'user_id',
-        'info_type',
-        'info_value'
+        'name',
+        'last_name',
+        'company',
+        'photo',
     ];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function contactInfos(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ContactInfo::class,'contact_uuid','uuid');
     }
 }

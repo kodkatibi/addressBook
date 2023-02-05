@@ -11,25 +11,12 @@ class ContactFactory extends Factory
 
     public function definition(): array
     {
-        $enableTypes = ['phone', 'email', 'location'];
-        $type = $enableTypes[rand(0, 2)];
-        switch ($type) {
-            case 'phone':
-                $value = $this->faker->phoneNumber;
-                break;
-            case 'email':
-                $value = $this->faker->email;
-                break;
-            case 'location':
-                $value = $this->faker->latitude . ',' . $this->faker->longitude;
-                break;
-        }
-
 
         return [
-            'uuid' => $this->faker->uuid,
-            'info_type' => $type,
-            'info_value' => $value
+            'name' => $this->faker->name,
+            'last_name' => $this->faker->lastName,
+            'company' => $this->faker->company,
+            'photo' => $this->faker->imageUrl,
         ];
     }
 }
