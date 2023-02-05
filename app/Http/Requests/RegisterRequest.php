@@ -10,6 +10,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'company' => 'required|max:255',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ];
