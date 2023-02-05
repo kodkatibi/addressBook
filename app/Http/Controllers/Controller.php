@@ -12,6 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected const STATUS_CODE_200 = 200;
+    protected const STATUS_CODE_401 = 401;
     protected const STATUS_CODE_404 = 404;
     protected const STATUS_CODE_422 = 422;
     protected const STATUS_CODE_500 = 500;
