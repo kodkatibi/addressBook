@@ -10,7 +10,6 @@ class ContactInfo extends BaseUUIDModel
 
 
     protected $fillable = [
-        'uuid',
         'contact_uuid',
         'info_type',
         'info_value'
@@ -18,6 +17,6 @@ class ContactInfo extends BaseUUIDModel
 
     public function contact(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Contact::class,'contact_uuid','uuid');
+        return $this->belongsTo(Contact::class);
     }
 }

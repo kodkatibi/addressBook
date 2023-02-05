@@ -8,7 +8,6 @@ class Contact extends BaseUUIDModel
 {
     use HasFactory;
     protected $fillable = [
-        'uuid',
         'user_id',
         'name',
         'last_name',
@@ -23,6 +22,6 @@ class Contact extends BaseUUIDModel
 
     public function contactInfos(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(ContactInfo::class,'contact_uuid','uuid');
+        return $this->hasMany(ContactInfo::class);
     }
 }

@@ -18,5 +18,8 @@ Route::post('login', [\App\Http\Controllers\Auth\AuthController::class, 'login']
 Route::middleware('jwt.auth')->group(function () {
     Route::prefix('contact')->group(function () {
         Route::get('list', [\App\Http\Controllers\ContactController::class, 'list']);
+        Route::post('create', [\App\Http\Controllers\ContactController::class, 'create']);
+        Route::post('update', [\App\Http\Controllers\ContactController::class, 'update']);
+        Route::delete('delete/{id}', [\App\Http\Controllers\ContactController::class, 'delete']);
     });
 });

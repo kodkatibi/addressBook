@@ -9,13 +9,14 @@ class BaseUUIDModel extends Model
 {
     public $incrementing = false;
     protected $primaryKey = 'uuid';
+    protected $keyType = 'string';
 
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
-            $model->uuid = (string) Uuid::uuid4();
+            $model->uuid = (string)Uuid::uuid4();
         });
     }
 }
