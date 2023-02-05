@@ -11,6 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     protected const STATUS_CODE_200 = 200;
     protected const STATUS_CODE_401 = 401;
     protected const STATUS_CODE_404 = 404;
@@ -20,6 +21,7 @@ class Controller extends BaseController
     public function response(
         array      $data = [],
         int|string $httpCode = self::STATUS_CODE_200,
+        array      $errors = []
     ): JsonResponse
     {
         $status = [
@@ -31,7 +33,7 @@ class Controller extends BaseController
         return response()->json([
             'data' => $data,
             'status' => $status,
-            'errors' => []
+            'errors' => $errors
         ], $httpCode);
     }
 }
