@@ -13,7 +13,7 @@ class ContactFactory extends Factory
     {
 
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'company' => $this->faker->company,
             'photo' => $this->faker->imageUrl,
