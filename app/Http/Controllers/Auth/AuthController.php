@@ -37,6 +37,7 @@ class AuthController extends Controller
 
     protected function respondWithToken()
     {
+
         $expiration = time() + 60 * 60;
 
         $payload = [
@@ -46,7 +47,7 @@ class AuthController extends Controller
         ];
 
         return $this->response([
-            'token' => JWT::encode($payload, config('auth.jwt_secret'), 'HS256'),
+            'token' => JWT::encode($payload, config('jwt.jwt_secret'), self::ALLOWED_ALGOS),
             'expires_in' => $expiration
         ]);
     }

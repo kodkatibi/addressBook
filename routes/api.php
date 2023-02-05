@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [\App\Http\Controllers\Auth\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\Auth\AuthController::class, 'login']);
 Route::middleware('jwt.auth')->group(function () {
-
+    Route::prefix('contact')->group(function () {
+        Route::get('list', [\App\Http\Controllers\ContactController::class, 'list']);
+    });
 });

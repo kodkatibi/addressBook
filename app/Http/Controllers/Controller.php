@@ -17,6 +17,7 @@ class Controller extends BaseController
     protected const STATUS_CODE_404 = 404;
     protected const STATUS_CODE_422 = 422;
     protected const STATUS_CODE_500 = 500;
+    protected const ALLOWED_ALGOS = 'HS256';
 
     public function response(
         array      $data = [],
