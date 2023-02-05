@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Firebase\JWT\JWT;
@@ -33,10 +32,10 @@ class AuthController extends Controller
             return $this->response(['error' => 'Unauthorized'], self::STATUS_CODE_401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->respondWithToken();
     }
 
-    protected function respondWithToken($token)
+    protected function respondWithToken()
     {
         $expiration = time() + 60 * 60;
 
