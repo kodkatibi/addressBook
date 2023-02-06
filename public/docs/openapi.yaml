@@ -1,0 +1,481 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:9000'
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: qxcbjedtcwucbmysnu
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: jayce18@example.org
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: BekL/(L280JR-I$
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/contact/list:
+    get:
+      summary: ''
+      operationId: getApiContactList
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Authorization header not found'
+                properties:
+                  error:
+                    type: string
+                    example: 'Authorization header not found'
+      tags:
+        - Endpoints
+      security: []
+  /api/contact/create:
+    post:
+      summary: ''
+      operationId: postApiContactCreate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: fyt
+                last_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: vjgvndpqzw
+                company:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ccsuerdulsvycvrskod
+                photo:
+                  type: string
+                  format: binary
+                  description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+              required:
+                - name
+                - last_name
+                - company
+                - photo
+      security: []
+  /api/contact/update:
+    post:
+      summary: ''
+      operationId: postApiContactUpdate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/contact/delete/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiContactDeleteId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete.'
+        example: non
+        required: true
+        schema:
+          type: string
+  '/api/contact-detail/{contactId}/list':
+    get:
+      summary: ''
+      operationId: getApiContactDetailContactIdList
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Authorization header not found'
+                properties:
+                  error:
+                    type: string
+                    example: 'Authorization header not found'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: contactId
+        description: ''
+        example: illo
+        required: true
+        schema:
+          type: string
+  '/api/contact-detail/{contactId}/create':
+    post:
+      summary: ''
+      operationId: postApiContactDetailContactIdCreate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                info_type:
+                  type: string
+                  description: 'Must be one of <code>email</code>, <code>phone</code>, or <code>location</code>.'
+                  example: location
+                info_value:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: rbcqssrb
+              required:
+                - info_type
+                - info_value
+      security: []
+    parameters:
+      -
+        in: path
+        name: contactId
+        description: ''
+        example: deserunt
+        required: true
+        schema:
+          type: string
+  '/api/contact-detail/{contactId}/update':
+    post:
+      summary: ''
+      operationId: postApiContactDetailContactIdUpdate
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: contactId
+        description: ''
+        example: perferendis
+        required: true
+        schema:
+          type: string
+  '/api/contact-detail/delete/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiContactDetailDeleteId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the delete.'
+        example: at
+        required: true
+        schema:
+          type: string
+  '/api/report/{location}/sameLocation':
+    get:
+      summary: ''
+      operationId: getApiReportLocationSameLocation
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Authorization header not found'
+                properties:
+                  error:
+                    type: string
+                    example: 'Authorization header not found'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: location
+        description: ''
+        example: quibusdam
+        required: true
+        schema:
+          type: string
+  '/api/report/{location}/phone':
+    get:
+      summary: ''
+      operationId: getApiReportLocationPhone
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Authorization header not found'
+                properties:
+                  error:
+                    type: string
+                    example: 'Authorization header not found'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: location
+        description: ''
+        example: consequatur
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''
