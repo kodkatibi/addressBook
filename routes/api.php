@@ -23,9 +23,13 @@ Route::middleware('jwt.auth')->group(function () {
         Route::delete('delete/{id}', [\App\Http\Controllers\ContactController::class, 'delete']);
     });
     Route::prefix('contact-detail')->group(function () {
-       Route::get('{contactId}/list', [\App\Http\Controllers\ContactInfoController::class, 'list']);
-       Route::post('{contactId}/create', [\App\Http\Controllers\ContactInfoController::class, 'create']);
-       Route::post('{contactId}/update', [\App\Http\Controllers\ContactInfoController::class, 'update']);
-       Route::delete('delete/{id}', [\App\Http\Controllers\ContactInfoController::class, 'delete']);
+        Route::get('{contactId}/list', [\App\Http\Controllers\ContactInfoController::class, 'list']);
+        Route::post('{contactId}/create', [\App\Http\Controllers\ContactInfoController::class, 'create']);
+        Route::post('{contactId}/update', [\App\Http\Controllers\ContactInfoController::class, 'update']);
+        Route::delete('delete/{id}', [\App\Http\Controllers\ContactInfoController::class, 'delete']);
+    });
+    Route::prefix('report')->group(function () {
+        Route::get('{location}/sameLocation', [\App\Http\Controllers\ReportController::class, 'baseLocation']);
+        Route::get('{location}/phone', [\App\Http\Controllers\ReportController::class, 'sameLocationWithPhone']);
     });
 });

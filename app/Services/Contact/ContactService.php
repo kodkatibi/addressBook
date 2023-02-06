@@ -32,6 +32,11 @@ class ContactService implements BaseServiceInterface
         return $this->list();
     }
 
+    public function getByIds(array $array)
+    {
+        return Contact::with('contactInfos')->whereIn('id', $array)->get()->toArray();
+    }
+
     public function uploadPhoto($file): string
     {
         return $file->store('contacts');

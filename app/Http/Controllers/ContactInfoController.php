@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactInfoController extends Controller
 {
-    protected ContactInfoService $contactService;
+    protected ContactInfoService $contactInfoService;
 
     public function __construct()
     {
-        $this->contactService = new ContactInfoService();
+        $this->contactInfoService = new ContactInfoService();
     }
 
     public function list($contactId)
     {
-        return $this->contactService->list($contactId);
+        return $this->contactInfoService->list($contactId);
     }
 
     public function create(ContactInfoRequest $request, $contactId)
@@ -28,20 +28,20 @@ class ContactInfoController extends Controller
             'info_type' => $request->info_type,
             'info_value' => $request->info_value,
         ];
-        $result = $this->contactService->create($data);
+        $result = $this->contactInfoService->create($data);
         return $this->response($result);
     }
 
     public function update(Request $request)
     {
         $data = $request->except('id');
-        $result = $this->contactService->update($data, $request->id);
+        $result = $this->contactInfoService->update($data, $request->id);
         return $this->response($result);
     }
 
     public function delete($id)
     {
-        $result = $this->contactService->delete($id);
+        $result = $this->contactInfoService->delete($id);
         return $this->response($result);
     }
 

@@ -32,4 +32,14 @@ class ContactInfoService implements BaseServiceInterface
         $contactInfo = ContactInfo::find($id)->delete();
         return $this->list($contactInfo->contact_id);
     }
+
+    public function filter($type, $value, $select = ['*']): array
+    {
+        return ContactInfo::query()->
+        where('info_type', $type)->
+        where('info_value', $value)->
+        withCount('contact')->
+        with('contact')->
+        get($select)->toArray();
+    }
 }
