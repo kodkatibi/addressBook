@@ -2,29 +2,34 @@
 
 namespace App\Services\ContactInfo;
 
+use App\Models\Contact;
 use App\Models\ContactInfo;
 use App\Services\BaseServiceInterface;
+use Illuminate\Support\Facades\Auth;
 
 class ContactInfoService implements BaseServiceInterface
 {
 
-    public function list()
+    public function list($id)
     {
-        // TODO: Implement list() method.
+        return Contact::where('uuid', $id)->where('user_id', Auth::id())->with('contactInfos')->first()->toArray();
     }
 
     public function create(array $data)
     {
-        ContactInfo::create($data);
+        $contactInfo = ContactInfo::create($data);
+        return $this->list($contactInfo->contact_id);
     }
 
     public function update(array $data, $id)
     {
-        ContactInfo::find($id)->update($data);
+        $contactInfo = ContactInfo::find($id)->update($data);
+        return $this->list($contactInfo->contact_id);
     }
 
     public function delete($id)
     {
-        ContactInfo::find($id)->delete();
+        $contactInfo = ContactInfo::find($id)->delete();
+        return $this->list($contactInfo->contact_id);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-    protected $contactService;
+    protected ContactService $contactService;
 
     public function __construct()
     {
